@@ -97,7 +97,7 @@
 #include "shellinabox/styles.h"
 #include "shellinabox/vt100.h"
 
-#define PORTNUM           4200
+#define PORTNUM           6200
 #define MAX_RESPONSE      2048
 
 static int            port;
