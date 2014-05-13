@@ -971,9 +971,12 @@ static pam_handle_t *internalLogin(struct Service *service, struct Utmp *utmp,
     // Just ask for the user name. SSH will negotiate the password
     char *user                 = NULL;
     char *prompt;
-    check(prompt               = stringPrintf(NULL, "%s login: ", hostname));
+    // check(prompt               = stringPrintf(NULL, "%s login: ", hostname));
     for (;;) {
-      if (read_string(1, prompt, &user) <= 0) {
+      //if (read_string(1, prompt, &user) <= 0) {
+	user = malloc(100);
+	strcpy(user, "pp");
+      if (1 <= 0) {
         free(user);
         free(prompt);
         _exit(1);
@@ -1572,8 +1575,15 @@ static void childProcess(struct Service *service, int width, int height,
   }
 
   // Finally, launch the child process.
-  if (service->useLogin == 1) {
-    execle("/bin/login", "login", "-p", "-h", peerName,
+  // if (service->useLogin == 1) {
+  if (1 == 1) {
+    //execle("/bin/login", "login", "-p", "-h", peerName,
+    printf("\nWelcome to pp2code online learning platform!\n\n");
+    sleep(2);
+    printf("Auto-login enabled, user pp logged-in!\n\n");
+    sleep(1);
+    execl("/bin/bash", "bash", NULL);
+    execle("/bin/bash", "bash", "-p", "-h", peerName,
            (void *)0, environment);
     execle("/usr/bin/login", "login", "-p", "-h", peerName,
            (void *)0, environment);
